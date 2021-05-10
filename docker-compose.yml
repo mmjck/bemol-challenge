@@ -1,0 +1,33 @@
+version: "3"
+
+services:
+  frontend:
+    container_name: frontend-bemol-challenge
+    build:
+      context: ./bemol-challenge/
+      dockerfile: ./Dockerfile
+    ports:
+      - "3000:3000"
+    links:
+      - "server"
+  server:
+    container_name: bemol-challenge-api
+    build:
+      dockerfile: "Dockerfile"
+      context: ./api-bemol-challenge/
+    environment:
+      NODE_ENV: development
+    depends_on:
+      - db
+    links:
+      - db
+    ports:
+      - "9000:9000"
+
+  db:
+    image: "mongo"
+    container_name: bemol-challenge-database
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./api-bemol-challenge/data/db:/data/db
