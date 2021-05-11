@@ -10,6 +10,10 @@ Os campos usados no formulário são:
 - E-mail
 - Endereço
 
+## Requerimentos
+
+- Docker
+
 ## Instruções de execução
 
 1. Na raiz do projeto, digitar o seguinte comando no terminal:
